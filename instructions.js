@@ -18,7 +18,7 @@ function drawInstr() {
   fill(0);
   textAlign(CENTER, TOP);
   textSize(36);
-  text("Instructions", width / 2, 80);
+  text("Instructions", width / 2, 160);
 
   // ---- Instruction text ----
   textSize(18);
@@ -26,9 +26,10 @@ function drawInstr() {
   // \n creates a line break in the text
   // This is useful for simple multi-line instructions
   const lines =
-    "Press the game button.\n" + "You have a chance to win or lose!";
+    "Press the explore button to begin.\n" +
+    "Choose a button on each screen to get to your final destination!";
 
-  text(lines, width / 2, 160);
+  text(lines, width / 2, 360);
 
   // ---- Back button ----
   // This button lets the player return to the start screen

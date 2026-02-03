@@ -12,12 +12,20 @@
 // and interact with the button on the game screen.
 // Keeping this in one object makes it easier to move,
 // resize, or restyle the button later.
-const gameBtn = {
-  x: 400, // x position (centre of the button)
+const leftBtn = {
+  x: 250, // x position (centre of the button)
   y: 550, // y position (centre of the button)
   w: 260, // width
   h: 90, // height
-  label: "PRESS HERE", // text shown on the button
+  label: "Left", // text shown on the button
+};
+
+const rightBtn = {
+  x: 550, // x position (centre of the button)
+  y: 550, // y position (centre of the button)
+  w: 260, // width
+  h: 90, // height
+  label: "Right", // text shown on the button
 };
 
 // ------------------------------
@@ -31,25 +39,29 @@ function drawGame() {
 
   // ---- Title and instructions text ----
   fill(0); // black text
-  textSize(32);
+  textSize(40);
   textAlign(CENTER, CENTER);
-  text("Game Screen", width / 2, 160);
+  text("Shoreline", width / 2, 160);
 
-  textSize(18);
+  textSize(20);
   text(
-    "Click the button (or press ENTER) for a random result.",
+    "You are standing on the shoreline of the beach.\n You feel the sand and water touching your feet, and hear the seagulls above you.",
     width / 2,
-    210,
+    300,
   );
+
+  text("Where will you go next?", width / 2, 400);
 
   // ---- Draw the button ----
   // We pass the button object to a helper function
-  drawGameButton(gameBtn);
+  drawGameButton(leftBtn);
+  drawGameButton(rightBtn);
 
   // ---- Cursor feedback ----
   // If the mouse is over the button, show a hand cursor
   // Otherwise, show the normal arrow cursor
-  cursor(isHover(gameBtn) ? HAND : ARROW);
+  const over = isHover(leftBtn) || isHover(rightBtn);
+  cursor(over ? HAND : ARROW);
 }
 
 // ------------------------------
@@ -85,44 +97,15 @@ function drawGameButton({ x, y, w, h, label }) {
 }
 
 // ------------------------------
-// Mouse input for this screen
-// ------------------------------
-// This function is called from main.js
-// only when currentScreen === "game"
-function gameMousePressed() {
-  // Only trigger the outcome if the button is clicked
-  if (isHover(gameBtn)) {
-    triggerRandomOutcome();
-  }
-}
-
-// ------------------------------
 // Keyboard input for this screen
 // ------------------------------
 // Allows keyboard-only interaction (accessibility + design)
-function gameKeyPressed() {
+function gameMousePressed() {
   // ENTER key triggers the same behaviour as clicking the button
-  if (keyCode === ENTER) {
-    triggerRandomOutcome();
-  }
-}
-
-// ------------------------------
-// Game logic: win or lose
-// ------------------------------
-// This function decides what happens next in the game.
-// It does NOT draw anything.
-function triggerRandomOutcome() {
-  // random() returns a value between 0 and 1
-  // Here we use a 50/50 chance:
-  // - less than 0.5 → win
-  // - 0.5 or greater → lose
-  //
-  // You can bias this later, for example:
-  // random() < 0.7 → 70% chance to win
-  if (random() < 0.5) {
-    currentScreen = "win";
-  } else {
+  if (isHover(leftBtn)) {
     currentScreen = "lose";
+  }
+  if (isHover(rightBtn)) {
+    currentScreen = "win";
   }
 }

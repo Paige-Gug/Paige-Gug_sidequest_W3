@@ -13,12 +13,14 @@
 function drawStart() {
   // Background colour for the start screen
   background(180, 225, 220); // soft teal background
+  fill(255, 239, 120);
+  rect(width / 2, height - height / 4, width, height / 2); // bottom rectangle
 
   // ---- Title text ----
   fill(30, 50, 60);
   textSize(46);
   textAlign(CENTER, CENTER);
-  text("Win or Lose", width / 2, 180);
+  text("Welcome to the beach!", width / 2, 280);
 
   // ---- Buttons (data only) ----
   // These objects store the position/size/label for each button.
@@ -26,18 +28,18 @@ function drawStart() {
   // and also reuse the same information for hover checks.
   const startBtn = {
     x: width / 2,
-    y: 320,
+    y: 420,
     w: 240,
     h: 80,
-    label: "START",
+    label: "Click to explore",
   };
 
   const instrBtn = {
     x: width / 2,
-    y: 430,
+    y: 530,
     w: 240,
     h: 80,
-    label: "INSTRUCTIONS",
+    label: "Instructions",
   };
 
   // Draw both buttons
@@ -57,8 +59,8 @@ function drawStart() {
 // Called from main.js only when currentScreen === "start"
 function startMousePressed() {
   // For input checks, we only need x,y,w,h (label is optional)
-  const startBtn = { x: width / 2, y: 320, w: 240, h: 80 };
-  const instrBtn = { x: width / 2, y: 430, w: 240, h: 80 };
+  const startBtn = { x: width / 2, y: 420, w: 240, h: 80 };
+  const instrBtn = { x: width / 2, y: 530, w: 240, h: 80 };
 
   // If START is clicked, go to the game screen
   if (isHover(startBtn)) {

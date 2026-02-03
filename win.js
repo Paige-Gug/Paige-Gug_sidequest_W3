@@ -14,19 +14,25 @@
 // drawWin() is called from main.js
 // only when currentScreen === "win"
 function drawWin() {
-  // Green-tinted background to communicate success
-  background(200, 255, 200);
+  // Teal-tinted background to communicate water
+  background(189, 255, 252);
 
   fill(0);
   textAlign(CENTER, CENTER);
 
   // Main success message
   textSize(40);
-  text("You Win!", width / 2, 300);
+  text("Tide Pools", width / 2, 300);
 
   // Instruction text
   textSize(20);
-  text("Click or press R to return to Start.", width / 2, 360);
+  text(
+    "Welcome to the tide pools!\n The water is clear and warm, and you can see platinum coins at the bottom.\n Dive in!",
+    width / 2,
+    430,
+  );
+
+  text("Click anywhere to return to the start.", width / 2, 560);
 }
 
 // ------------------------------------------------------------
