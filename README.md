@@ -6,8 +6,8 @@ GBDA302 Week 3: Exploring the Beach
 
 ## Authors
 
-Karen Cochrane and David Han
-Paige Gugeler
+- Karen Cochrane and David Han
+- Paige Gugeler
 
 ---
 
